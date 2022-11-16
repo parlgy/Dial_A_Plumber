@@ -25,9 +25,12 @@ class _OnboardingScreenOneState extends State<OnboardingScreenOne> {
           child: Column(
             children: [
               Container(
-                height: MediaQuery.of(context).size.height / 2,
+                height: MediaQuery.of(context).size.height / 1.6,
                 decoration: const BoxDecoration(
-                  // borderRadius: Border.symmetric(horizontal: ),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(50),
+                    bottomRight: Radius.circular(50),
+                  ),
                   image: DecorationImage(
                     image: AssetImage('assets/images/onboarding2.jpg'),
                     fit: BoxFit.cover,
@@ -52,13 +55,53 @@ class _OnboardingScreenOneState extends State<OnboardingScreenOne> {
                 child: const Text(
                   'I haven\'t bailed on writing. Look, I\'m generating a random paragraph at this very moment in an attempt.',
                   textAlign: TextAlign.center,
-                  style: TextStyle(),
+                  style: TextStyle(fontSize: 17),
                 ),
               ),
-              // Expanded(child: Container()),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 10,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.orange[600],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    height: 10,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    height: 10,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 50,
+              ),
               Container(
-                margin: EdgeInsets.only(left: 20, right: 20),
-                height: MediaQuery.of(context).size.height / 2,
+                margin: const EdgeInsets.only(left: 20, right: 20),
+                // height: MediaQuery.of(context).size.height / 5,
                 child: Row(
                   children: [
                     const Text(
@@ -67,15 +110,21 @@ class _OnboardingScreenOneState extends State<OnboardingScreenOne> {
                     ),
                     Expanded(child: Container()),
                     Row(
-                      children: const [
+                      children: [
                         Text(
                           'Next',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
+                            color: Colors.blue[900],
                           ),
                         ),
-                        Icon(Icons.arrow_forward),
+                        const SizedBox(width: 5),
+                        Icon(
+                          Icons.arrow_forward,
+                          size: 30,
+                          color: Colors.blue[900],
+                        ),
                       ],
                     )
                   ],
