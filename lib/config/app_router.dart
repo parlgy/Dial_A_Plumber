@@ -29,6 +29,9 @@ class AppRouter {
       case UserInformation.routeName:
         return UserInformation.route();
 
+      case DashboardScreen.routeName:
+        return DashboardScreen.route();
+
       default:
         return _errorRoute();
     }
