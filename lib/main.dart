@@ -1,4 +1,3 @@
-import 'package:dial_a_plumber/pages/onboarding.dart/onboardingscreen_one.dart';
 import 'package:flutter/material.dart';
 import 'config/app_router.dart';
 import 'pages/pages.dart';
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       onGenerateRoute: AppRouter.onGenerateRoute,
-      initialRoute: OnboardingScreenOne.routeName,
+      initialRoute: OnboardingScreenTwo.routeName,
       // home: const LandingScreen(),
     );
   }

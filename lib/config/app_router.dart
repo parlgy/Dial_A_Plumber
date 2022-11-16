@@ -1,4 +1,4 @@
-import 'package:dial_a_plumber/pages/onboarding.dart/onboardingscreen_one.dart';
+import 'package:dial_a_plumber/pages/onboarding/onboardingscreen_one.dart';
 import 'package:dial_a_plumber/pages/pages.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +19,9 @@ class AppRouter {
 
       case OnboardingScreenOne.routeName:
         return OnboardingScreenOne.route();
+
+      case OnboardingScreenTwo.routeName:
+        return OnboardingScreenTwo.route();
 
       default:
         return _errorRoute();
