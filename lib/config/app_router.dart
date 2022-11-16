@@ -1,5 +1,4 @@
-import 'package:dial_a_plumber/pages/landingpage.dart';
-import 'package:dial_a_plumber/pages/registration/signupscreen.dart';
+import 'package:dial_a_plumber/pages/pages.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -13,6 +12,9 @@ class AppRouter {
 
       case SignupScreen.routeName:
         return SignupScreen.route();
+
+      case SigninScreen.routeName:
+        return SigninScreen.route();
 
       default:
         return _errorRoute();
