@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       onGenerateRoute: AppRouter.onGenerateRoute,
-      initialRoute: OnboardingScreenThree.routeName,
+      initialRoute: UserInformation.routeName,
       // home: const LandingScreen(),
     );
   }

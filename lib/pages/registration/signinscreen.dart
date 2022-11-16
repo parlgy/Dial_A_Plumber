@@ -67,6 +67,8 @@ class _SigninScreenState extends State<SigninScreen> {
                   decoration: InputDecoration(
                     hintText: 'Password',
                     border: OutlineInputBorder(),
+                    // obscureText: true,
+                    // obscuringCharacter: "*",
                   ),
                 ),
                 const SizedBox(
