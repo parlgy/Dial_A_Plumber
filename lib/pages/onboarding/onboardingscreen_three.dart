@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
-class OnboardingScreenTwo extends StatefulWidget {
-  const OnboardingScreenTwo({super.key});
+class OnboardingScreenThree extends StatefulWidget {
+  const OnboardingScreenThree({super.key});
 
-  static const String routeName = '/onboardingScreenTwo';
+  static const String routeName = '/onboardingScreenThree';
 
   static Route route() {
     return MaterialPageRoute(
       settings: const RouteSettings(name: routeName),
-      builder: (context) => const OnboardingScreenTwo(),
+      builder: (context) => const OnboardingScreenThree(),
     );
   }
 
   @override
-  State<OnboardingScreenTwo> createState() => _OnboardingScreenTwoState();
+  State<OnboardingScreenThree> createState() => _OnboardingScreenTwoState();
 }
 
-class _OnboardingScreenTwoState extends State<OnboardingScreenTwo> {
+class _OnboardingScreenTwoState extends State<OnboardingScreenThree> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,15 +40,11 @@ class _OnboardingScreenTwoState extends State<OnboardingScreenTwo> {
               const SizedBox(
                 height: 30,
               ),
-              Container(
-                margin: const EdgeInsets.only(left: 40, right: 40),
-                child: const Text(
-                  'Support Female Plumbers',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
+              const Text(
+                'One Call Away',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(
@@ -57,7 +53,7 @@ class _OnboardingScreenTwoState extends State<OnboardingScreenTwo> {
               Container(
                 margin: const EdgeInsets.only(left: 40, right: 40),
                 child: const Text(
-                  'I haven\'t bailed on writing. Look, I\'m generating a random paragraph',
+                  'I haven\'t bailed on writing. Look, I\'m generating a random paragraph at this very moment in an attempt.',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 17),
                 ),
@@ -83,7 +79,7 @@ class _OnboardingScreenTwoState extends State<OnboardingScreenTwo> {
                     height: 10,
                     width: 50,
                     decoration: BoxDecoration(
-                      color: Colors.orange[600],
+                      color: Colors.grey[300],
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
@@ -94,7 +90,7 @@ class _OnboardingScreenTwoState extends State<OnboardingScreenTwo> {
                     height: 10,
                     width: 50,
                     decoration: BoxDecoration(
-                      color: Colors.grey[300],
+                      color: Colors.orange[600],
                       borderRadius: BorderRadius.circular(10),
                     ),
                   )

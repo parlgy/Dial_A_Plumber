@@ -23,6 +23,9 @@ class AppRouter {
       case OnboardingScreenTwo.routeName:
         return OnboardingScreenTwo.route();
 
+      case OnboardingScreenThree.routeName:
+        return OnboardingScreenThree.route();
+
       default:
         return _errorRoute();
     }
