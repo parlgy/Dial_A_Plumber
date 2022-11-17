@@ -1,3 +1,4 @@
+import 'package:dial_a_plumber/pages/pages.dart';
 import 'package:flutter/material.dart';
 
 class SigninScreen extends StatefulWidget {
@@ -77,7 +78,12 @@ class _SigninScreenState extends State<SigninScreen> {
 
                 // Signup Button
                 InkWell(
-                  // onTap: () => ,
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => OnboardingScreenOne()));
+                  },
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     padding: const EdgeInsets.only(top: 15, bottom: 15),
@@ -124,15 +130,23 @@ class _SigninScreenState extends State<SigninScreen> {
                 Container(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text('Already have an account?'),
-                      SizedBox(
+                    children: [
+                      const Text('Don\'t have an account?'),
+                      const SizedBox(
                         width: 5,
                       ),
-                      Text(
-                        'Sign in',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignupScreen()));
+                        },
+                        child: const Text(
+                          'Sign up',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       )
                     ],

@@ -1,3 +1,4 @@
+import 'package:dial_a_plumber/pages/pages.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreenTwo extends StatefulWidget {
@@ -108,28 +109,44 @@ class _OnboardingScreenTwoState extends State<OnboardingScreenTwo> {
                 // height: MediaQuery.of(context).size.height / 5,
                 child: Row(
                   children: [
-                    const Text(
-                      'Skip',
-                      style: TextStyle(fontSize: 20),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => UserInformation()));
+                      },
+                      child: const Text(
+                        'Skip',
+                        style: TextStyle(fontSize: 20),
+                      ),
                     ),
                     Expanded(child: Container()),
-                    Row(
-                      children: [
-                        Text(
-                          'Next',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => OnboardingScreenThree()));
+                      },
+                      child: Row(
+                        children: [
+                          Text(
+                            'Next',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue[900],
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          Icon(
+                            Icons.arrow_forward,
+                            size: 30,
                             color: Colors.blue[900],
                           ),
-                        ),
-                        const SizedBox(width: 5),
-                        Icon(
-                          Icons.arrow_forward,
-                          size: 30,
-                          color: Colors.blue[900],
-                        ),
-                      ],
+                        ],
+                      ),
                     )
                   ],
                 ),

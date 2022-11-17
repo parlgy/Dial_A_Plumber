@@ -8,4 +8,3 @@ export 'onboarding/onboardingscreen_one.dart';
 export 'onboarding/onboardingscreen_two.dart';
 export 'onboarding/onboardingscreen_three.dart';
 export 'dashboard/dashboardscreen.dart';
-export 'dashboard/bottomnavigation.dart';

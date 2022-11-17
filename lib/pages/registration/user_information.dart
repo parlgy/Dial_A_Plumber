@@ -1,3 +1,4 @@
+import 'package:dial_a_plumber/pages/dashboard/dashboardscreen.dart';
 import 'package:flutter/material.dart';
 
 class UserInformation extends StatefulWidget {
@@ -67,7 +68,10 @@ class _UserInformationState extends State<UserInformation> {
               height: 20,
             ),
             InkWell(
-              // onTap: () => ,
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DashboardScreen()));
+              },
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 padding: const EdgeInsets.only(top: 15, bottom: 15),

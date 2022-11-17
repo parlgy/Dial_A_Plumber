@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../pages.dart';
-
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
 
@@ -73,11 +71,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   const Text(
                     'Get a',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const Text(
                     'Plumber',
-                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const Text(
                     'Today',

@@ -53,14 +53,32 @@ class LandingScreen extends StatelessWidget {
             const SizedBox(
               height: 50,
             ),
-            const LandingPageButtonFilled(
-              buttonName2: 'Sign up',
+            Container(
+              margin: const EdgeInsets.only(left: 20, right: 20),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignupScreen()));
+                },
+                child: const LandingPageButtonFilled(
+                  buttonName2: 'Sign up',
+                ),
+              ),
             ),
             const SizedBox(
               height: 10,
             ),
-            const LandingPageButtons(
-              buttonName: 'Sign in',
+            Container(
+              margin: const EdgeInsets.only(left: 20, right: 20),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SigninScreen()));
+                },
+                child: const LandingPageButtons(
+                  buttonName: 'Sign in',
+                ),
+              ),
             ),
           ],
         ),

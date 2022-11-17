@@ -1,3 +1,4 @@
+import 'package:dial_a_plumber/pages/pages.dart';
 import 'package:flutter/material.dart';
 
 class LandingPageButtonFilled extends StatelessWidget {
@@ -14,7 +15,7 @@ class LandingPageButtonFilled extends StatelessWidget {
 
       child: Container(
         width: MediaQuery.of(context).size.width,
-        margin: const EdgeInsets.only(left: 20, right: 20),
+        // margin: const EdgeInsets.only(left: 20, right: 20),
         padding: const EdgeInsets.only(top: 15, bottom: 15),
         decoration: BoxDecoration(
           color: Colors.blue.shade900,
@@ -44,23 +45,20 @@ class LandingPageButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      // onTap: () => ,
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        margin: const EdgeInsets.only(left: 20, right: 20),
-        padding: const EdgeInsets.only(top: 15, bottom: 15),
-        decoration: BoxDecoration(
-            // color: Colors.blue.shade900,
-            borderRadius: BorderRadius.circular(5),
-            border: Border.all(color: Colors.blue.shade900)),
-        child: Center(
-          child: Text(
-            buttonName,
-            style: const TextStyle(
-              fontSize: 20,
-              // color: Colors.white,
-            ),
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      // margin: const EdgeInsets.only(left: 20, right: 20),
+      padding: const EdgeInsets.only(top: 15, bottom: 15),
+      decoration: BoxDecoration(
+          // color: Colors.blue.shade900,
+          borderRadius: BorderRadius.circular(5),
+          border: Border.all(color: Colors.blue.shade900)),
+      child: Center(
+        child: Text(
+          buttonName,
+          style: const TextStyle(
+            fontSize: 20,
+            // color: Colors.white,
           ),
         ),
       ),

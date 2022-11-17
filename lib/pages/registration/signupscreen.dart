@@ -88,7 +88,12 @@ class _SignupScreenState extends State<SignupScreen> {
 
                 // Signup Button
                 InkWell(
-                  // onTap: () => ,
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => OnboardingScreenOne()));
+                  },
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     padding: const EdgeInsets.only(top: 15, bottom: 15),
@@ -112,30 +117,32 @@ class _SignupScreenState extends State<SignupScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text('Already have an account?'),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Already have an account?'),
+                    const SizedBox(width: 5),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SigninScreen()));
+                      },
+                      child: const Text(
                         'Sign in',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
-                      )
-                    ],
-                  ),
+                      ),
+                    )
+                  ],
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height / 9,
-                ),
+                SizedBox(height: MediaQuery.of(context).size.height / 9),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Powered By'),
+                    const Text('Powered By'),
                     Container(
                       height: 80,
                       width: 80,
