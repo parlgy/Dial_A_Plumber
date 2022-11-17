@@ -1,5 +1,7 @@
 import 'package:dial_a_plumber/pages/pages.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SigninScreen extends StatefulWidget {
   const SigninScreen({super.key});
@@ -18,15 +20,104 @@ class SigninScreen extends StatefulWidget {
 }
 
 class _SigninScreenState extends State<SigninScreen> {
+  // Form Key
+  final _formKey = GlobalKey<FormState>();
+
+  // Editing contoller
+  final TextEditingController emailController = new TextEditingController();
+  final TextEditingController passwordController = new TextEditingController();
+
+  // Firebase
+  final _auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
+    //  Email field
+    final emailField = TextFormField(
+      autofocus: false,
+      controller: emailController,
+      keyboardType: TextInputType.emailAddress,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return ("Please Enter your Email");
+        }
+
+        // Reg Expression for email Validation
+        if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)) {
+          return ("Please Enter a valid Email");
+        }
+        return null;
+      },
+      onSaved: (value) {
+        emailController.text = value!;
+      },
+      textInputAction: TextInputAction.next,
+      decoration: const InputDecoration(
+        prefixIcon: Icon(Icons.email),
+        contentPadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+        hintText: 'name@name.com',
+        labelText: 'Email Address',
+        border: OutlineInputBorder(),
+      ),
+    );
+    // Password Field
+    final passwordField = TextFormField(
+      autofocus: false,
+      obscureText: true,
+      controller: passwordController,
+      validator: (value) {
+        // Reg expression for Password Validation
+        RegExp regex = new RegExp(r'^.{6,}$');
+        if (value!.isEmpty) {
+          return ("Password is required for login");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Please Enter Valid Password(min. 6 Character");
+        }
+      },
+      onSaved: (value) {
+        passwordController.text = value!;
+      },
+      textInputAction: TextInputAction.done,
+      decoration: const InputDecoration(
+        prefixIcon: Icon(Icons.password),
+        contentPadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+        hintText: 'Password',
+        labelText: 'Password',
+        border: OutlineInputBorder(),
+      ),
+    );
+
+    final signinButton = Material(
+      elevation: 5,
+      borderRadius: BorderRadius.circular(30),
+      child: MaterialButton(
+        color: Colors.blue[900],
+        padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+        minWidth: MediaQuery.of(context).size.width,
+        onPressed: () {
+          signIn(emailController.text, passwordController.text);
+        },
+        child: const Text(
+          "Login",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+
     return Scaffold(
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Center(
+        child: Form(
+          key: _formKey,
+          child: Container(
+            padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
-              children: [
+              children: <Widget>[
                 const SizedBox(
                   height: 100,
                 ),
@@ -52,105 +143,63 @@ class _SigninScreenState extends State<SigninScreen> {
                 const SizedBox(
                   height: 50,
                 ),
-
-                // Input Fields Start here
-
-                const TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Email Address',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
+                emailField,
                 const SizedBox(
                   height: 10,
                 ),
-                const TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Password',
-                    border: OutlineInputBorder(),
-                    // obscureText: true,
-                    // obscuringCharacter: "*",
+                passwordField,
+                Padding(
+                  padding: const EdgeInsets.only(
+                    bottom: 20.0,
+                    top: 20,
                   ),
-                ),
-                const SizedBox(
-                  height: 30,
+                  child: signinButton,
                 ),
 
-                // Signup Button
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => OnboardingScreenOne()));
-                  },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    padding: const EdgeInsets.only(top: 15, bottom: 15),
-                    decoration: BoxDecoration(
-                      color: Colors.blue.shade900,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'Login',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-
-                // ForgotPassword
+                //           // ForgotPassword
                 const SizedBox(
                   height: 20,
                 ),
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text('Forgot Password?'),
-                      SizedBox(
-                        width: 5,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text('Forgot Password?'),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      'Here',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
                       ),
-                      Text(
-                        'Here',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )
-                    ],
-                  ),
+                    )
+                  ],
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text('Don\'t have an account?'),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignupScreen()));
-                        },
-                        child: const Text(
-                          'Sign up',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Don\'t have an account?'),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignupScreen()));
+                      },
+                      child: const Text(
+                        'Sign up',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
                         ),
-                      )
-                    ],
-                  ),
+                      ),
+                    )
+                  ],
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height / 7,
@@ -176,5 +225,27 @@ class _SigninScreenState extends State<SigninScreen> {
         ),
       ),
     );
+  }
+
+  // Login Function
+  void signIn(String email, String password) async {
+    if (_formKey.currentState!.validate()) {
+      await _auth
+          .signInWithEmailAndPassword(
+            email: email.toString(),
+            password: password.toString(),
+          )
+          .then((uid) => {
+                Fluttertoast.showToast(msg: "Login Successful"),
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) => DashboardScreen(),
+                  ),
+                )
+              })
+          .catchError((e) {
+        Fluttertoast.showToast(msg: e!.message);
+      });
+    }
   }
 }

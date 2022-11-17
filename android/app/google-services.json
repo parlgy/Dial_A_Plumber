@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "786722773558",
+    "project_id": "dial-a-plumber",
+    "storage_bucket": "dial-a-plumber.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:786722773558:android:b26f9e33f89b2349579697",
+        "android_client_info": {
+          "package_name": "com.example.dial_a_plumber"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "786722773558-jld2vj5oscvgpqs9j0ad86sum74umggf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEazou6yadwW3mjGBkIVH72T_TaGNJmQI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "786722773558-jld2vj5oscvgpqs9j0ad86sum74umggf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -111,7 +111,7 @@ class _OnboardingScreenOneState extends State<OnboardingScreenOne> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => UserInformation()));
+                                builder: (context) => const UserInformation()));
                       },
                       child: const Text(
                         'Skip',
@@ -124,7 +124,8 @@ class _OnboardingScreenOneState extends State<OnboardingScreenOne> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => OnboardingScreenTwo()));
+                                builder: (context) =>
+                                    const OnboardingScreenTwo()));
                       },
                       child: Row(
                         children: [

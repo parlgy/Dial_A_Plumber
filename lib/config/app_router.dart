@@ -1,5 +1,6 @@
 import 'package:dial_a_plumber/pages/onboarding/onboardingscreen_one.dart';
 import 'package:dial_a_plumber/pages/pages.dart';
+import 'package:dial_a_plumber/pages/profile/profilepage.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -31,6 +32,9 @@ class AppRouter {
 
       case DashboardScreen.routeName:
         return DashboardScreen.route();
+
+      case EditProfilePage.routeName:
+        return EditProfilePage.route();
 
       default:
         return _errorRoute();
