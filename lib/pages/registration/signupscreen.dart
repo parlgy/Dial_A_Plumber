@@ -44,7 +44,16 @@ class _SignupScreenState extends State<SignupScreen> {
       autofocus: false,
       controller: fullNameEditingController,
       keyboardType: TextInputType.name,
-      // validator: (){},
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{3,}$');
+        if (value!.isEmpty) {
+          return ("First Name cannot be Empty");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Enter Valid name(Min. 3 Character)");
+        }
+        return null;
+      },
       onSaved: (value) {
         fullNameEditingController.text = value!;
       },
@@ -63,7 +72,17 @@ class _SignupScreenState extends State<SignupScreen> {
       autofocus: false,
       controller: emailEditingController,
       keyboardType: TextInputType.emailAddress,
-      // validator: (){},
+      validator: (value) {
+        if (value!.isEmpty) {
+          return ("Please Enter Your Email");
+        }
+        // reg expression for email validation
+        if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+            .hasMatch(value)) {
+          return ("Please Enter a valid email");
+        }
+        return null;
+      },
       onSaved: (value) {
         emailEditingController.text = value!;
       },
@@ -81,7 +100,15 @@ class _SignupScreenState extends State<SignupScreen> {
       autofocus: false,
       obscureText: true,
       controller: passwordEditingController,
-      // validator: (){},
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{6,}$');
+        if (value!.isEmpty) {
+          return ("Password is required for login");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Enter Valid Password(Min. 6 Character)");
+        }
+      },
       onSaved: (value) {
         passwordEditingController.text = value!;
       },
@@ -99,7 +126,13 @@ class _SignupScreenState extends State<SignupScreen> {
       autofocus: false,
       obscureText: true,
       controller: confirmPasswordEditingController,
-      // validator: (){},
+      validator: (value) {
+        if (confirmPasswordEditingController.text !=
+            passwordEditingController.text) {
+          return "Password don't match";
+        }
+        return null;
+      },
       onSaved: (value) {
         confirmPasswordEditingController.text = value!;
       },
@@ -232,9 +265,9 @@ class _SignupScreenState extends State<SignupScreen> {
         await _auth
             .createUserWithEmailAndPassword(email: email, password: password)
             .then((value) => {postDetailsToFirestore(),
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => OnboardingScreenOne()),
-          )
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => OnboardingScreenOne()),
+        )
         },)
             .catchError((e) {
           Fluttertoast.showToast(msg: e!.message);
@@ -288,6 +321,8 @@ class _SignupScreenState extends State<SignupScreen> {
         .doc(user.uid)
         .set(userModel.toMap());
     Fluttertoast.showToast(msg: "Account created successfully :) ");
+
+
 
     Navigator.pushAndRemoveUntil(
         (context),
