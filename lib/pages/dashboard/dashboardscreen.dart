@@ -1,3 +1,4 @@
+import 'package:dial_a_plumber/pages/profile/profilepage.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -36,12 +37,22 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
         ),
         actions: [
-          Container(
-            margin: const EdgeInsets.only(right: 20),
-            child: const Icon(
-              Icons.settings,
-              size: 30,
-              color: Colors.black,
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => EditProfilePage(),
+                ),
+              );
+            },
+            child: Container(
+              margin: const EdgeInsets.only(right: 20),
+              child: const Icon(
+                Icons.settings,
+                size: 30,
+                color: Colors.black,
+              ),
             ),
           )
         ],

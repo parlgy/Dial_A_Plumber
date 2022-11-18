@@ -1,33 +1,55 @@
 {
   "project_info": {
+<<<<<<< HEAD
     "project_number": "1090554306852",
     "project_id": "project-plumber-c1869",
     "storage_bucket": "project-plumber-c1869.appspot.com"
+=======
+    "project_number": "786722773558",
+    "project_id": "dial-a-plumber",
+    "storage_bucket": "dial-a-plumber.appspot.com"
+>>>>>>> 1351077ff2b40f732f614ca1e563cff131b162ff
   },
   "client": [
     {
       "client_info": {
+<<<<<<< HEAD
         "mobilesdk_app_id": "1:1090554306852:android:9050dd8a2e3573abf353b1",
+=======
+        "mobilesdk_app_id": "1:786722773558:android:b26f9e33f89b2349579697",
+>>>>>>> 1351077ff2b40f732f614ca1e563cff131b162ff
         "android_client_info": {
           "package_name": "com.example.dial_a_plumber"
         }
       },
       "oauth_client": [
         {
+<<<<<<< HEAD
           "client_id": "1090554306852-61ujlvf0cd3s366te5rr3m9n7v65bd77.apps.googleusercontent.com",
+=======
+          "client_id": "786722773558-jld2vj5oscvgpqs9j0ad86sum74umggf.apps.googleusercontent.com",
+>>>>>>> 1351077ff2b40f732f614ca1e563cff131b162ff
           "client_type": 3
         }
       ],
       "api_key": [
         {
+<<<<<<< HEAD
           "current_key": "AIzaSyCnzd5Das8f6ftrHoU0Iz4l3wd2m2f_dFA"
+=======
+          "current_key": "AIzaSyBEazou6yadwW3mjGBkIVH72T_TaGNJmQI"
+>>>>>>> 1351077ff2b40f732f614ca1e563cff131b162ff
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
+<<<<<<< HEAD
               "client_id": "1090554306852-61ujlvf0cd3s366te5rr3m9n7v65bd77.apps.googleusercontent.com",
+=======
+              "client_id": "786722773558-jld2vj5oscvgpqs9j0ad86sum74umggf.apps.googleusercontent.com",
+>>>>>>> 1351077ff2b40f732f614ca1e563cff131b162ff
               "client_type": 3
             }
           ]

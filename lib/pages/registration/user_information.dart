@@ -32,9 +32,7 @@ class _UserInformationState extends State<UserInformation> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(
-              height: 30,
-            ),
+            const SizedBox(height: 30),
             Container(
               height: MediaQuery.of(context).size.height / 2.7,
               decoration: const BoxDecoration(
@@ -43,9 +41,7 @@ class _UserInformationState extends State<UserInformation> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             // input forms
             const TextField(
               decoration: InputDecoration(
@@ -54,9 +50,7 @@ class _UserInformationState extends State<UserInformation> {
                 hintText: '+254',
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             const TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
@@ -64,9 +58,7 @@ class _UserInformationState extends State<UserInformation> {
                 hintText: 'Enter Your Region',
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             InkWell(
               onTap: () {
                 Navigator.push(context,
