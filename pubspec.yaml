@@ -37,17 +37,12 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_native_splash: ^2.2.14
-<<<<<<< HEAD
+
+  
   firebase_core: ^2.3.0
   firebase_auth: ^4.1.3
   cloud_firestore: ^4.1.0
   fluttertoast: ^8.1.1
-=======
-  cloud_firestore: ^4.1.0
-  firebase_auth: ^4.1.3
-  fluttertoast: ^8.1.1
-  firebase_core: ^2.3.0
->>>>>>> 1351077ff2b40f732f614ca1e563cff131b162ff
 
 
 flutter_native_splash:

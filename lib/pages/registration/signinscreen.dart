@@ -56,8 +56,8 @@ class _SigninScreenState extends State<SigninScreen> {
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.mail),
-          contentPadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+          prefixIcon: const Icon(Icons.mail),
+          contentPadding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
           hintText: "Email",
           // labelText: "Email",
           border: OutlineInputBorder(
@@ -84,8 +84,8 @@ class _SigninScreenState extends State<SigninScreen> {
         },
         textInputAction: TextInputAction.done,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.vpn_key),
-          contentPadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+          prefixIcon: const Icon(Icons.vpn_key),
+          contentPadding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
           hintText: "Password",
           // labelText: "Password",
           border: OutlineInputBorder(
@@ -98,7 +98,7 @@ class _SigninScreenState extends State<SigninScreen> {
       borderRadius: BorderRadius.circular(5),
       color: Colors.blue[900],
       child: MaterialButton(
-        padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
         onPressed: () {
           signIn(emailController.text, passwordController.text);
@@ -121,7 +121,7 @@ class _SigninScreenState extends State<SigninScreen> {
         child: Container(
           color: Colors.white,
           child: Padding(
-            padding: const EdgeInsets.all(36.0),
+            padding: const EdgeInsets.all(20.0),
             child: Form(
               key: _formKey,
               child: Column(
@@ -149,17 +149,16 @@ class _SigninScreenState extends State<SigninScreen> {
                     ),
                   ),
                   const SizedBox(height: 50),
-                  SizedBox(height: 45),
                   emailField,
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   passwordField,
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   loginButton,
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text("Don't have an account? "),
+                        const Text("Don't have an account? "),
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
@@ -176,7 +175,23 @@ class _SigninScreenState extends State<SigninScreen> {
                             ),
                           ),
                         )
-                      ])
+                      ]),
+                  SizedBox(height: MediaQuery.of(context).size.height / 5),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Powered By'),
+                      Container(
+                        height: 80,
+                        width: 80,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/seld_logo.png'),
+                          ),
+                        ),
+                      )
+                    ],
+                  )
                 ],
               ),
             ),

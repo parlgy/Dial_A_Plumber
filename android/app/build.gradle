@@ -49,14 +49,11 @@ android {
         applicationId "com.example.dial_a_plumber"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-<<<<<<< HEAD
-=======
-        // minSdkVersion flutter.minSdkVersion
->>>>>>> 1351077ff2b40f732f614ca1e563cff131b162ff
         minSdkVersion 21
-        targetSdkVersion flutter.targetSdkVersion
+        targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -74,9 +71,6 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-<<<<<<< HEAD
     implementation platform('com.google.firebase:firebase-bom:31.0.3')
-=======
-    implementation 'com.google.firebase:firebase-analytics'
->>>>>>> 1351077ff2b40f732f614ca1e563cff131b162ff
+    implementation 'com.android.support:multidex:2.0.1'
 }

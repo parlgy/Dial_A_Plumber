@@ -1,4 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dial_a_plumber/models/user_models.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../pages.dart';
 
@@ -19,6 +23,12 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  final _auth = FirebaseAuth.instance;
+
+  // string for displaying the error Message
+  String? errorMessage;
+
+  // Our form Key
   final _formKey = GlobalKey<FormState>();
 
   // Editing Controller
@@ -112,12 +122,7 @@ class _SignupScreenState extends State<SignupScreen> {
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => OnboardingScreenOne(),
-            ),
-          );
+          signUp(emailEditingController.text, passwordEditingController.text);
         },
         child: const Text(
           "Signup",
@@ -137,84 +142,156 @@ class _SignupScreenState extends State<SignupScreen> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),
-          child: Column(
-            children: <Widget>[
-              const SizedBox(height: 100),
-              Container(
-                height: 70,
-                width: 70,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/logo2.png'),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: <Widget>[
+                const SizedBox(height: 100),
+                Container(
+                  height: 70,
+                  width: 70,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/logo2.png'),
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              const Text(
-                'Create Your Account',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+                const SizedBox(
+                  height: 30,
                 ),
-              ),
-              const SizedBox(height: 50),
-              fullNameField,
-              const SizedBox(height: 10),
-              emailField,
-              const SizedBox(height: 10),
-              passwordField,
-              const SizedBox(height: 10),
-              confirmPasswordField,
-              const SizedBox(height: 30),
-              signupButton,
+                const Text(
+                  'Create Your Account',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 50),
+                fullNameField,
+                const SizedBox(height: 10),
+                emailField,
+                const SizedBox(height: 10),
+                passwordField,
+                const SizedBox(height: 10),
+                confirmPasswordField,
+                const SizedBox(height: 30),
+                signupButton,
 
-              // ForgotPassword
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('Already have an account?'),
-                  const SizedBox(width: 5),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SigninScreen(),
+                // ForgotPassword
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Already have an account?'),
+                    const SizedBox(width: 5),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SigninScreen(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        'Sign in',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
                         ),
-                      );
-                    },
-                    child: const Text(
-                      'Sign in',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
                       ),
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(height: MediaQuery.of(context).size.height / 14),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('Powered By'),
-                  Container(
-                    height: 80,
-                    width: 80,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/seld_logo.png'),
+                    )
+                  ],
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height / 14),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Powered By'),
+                    Container(
+                      height: 80,
+                      width: 80,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/seld_logo.png'),
+                        ),
                       ),
-                    ),
-                  )
-                ],
-              )
-            ],
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
     );
+  }
+
+  void signUp(String email, String password) async {
+    if (_formKey.currentState!.validate()) {
+      try {
+        await _auth
+            .createUserWithEmailAndPassword(email: email, password: password)
+            .then((value) => {postDetailsToFirestore(),
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => OnboardingScreenOne()),
+          )
+        },)
+            .catchError((e) {
+          Fluttertoast.showToast(msg: e!.message);
+        });
+      } on FirebaseAuthException catch (error) {
+        switch (error.code) {
+          case "invalid-email":
+            errorMessage = "Your email address appears to be malformed.";
+            break;
+          case "wrong-password":
+            errorMessage = "Your password is wrong.";
+            break;
+          case "user-not-found":
+            errorMessage = "User with this email doesn't exist.";
+            break;
+          case "user-disabled":
+            errorMessage = "User with this email has been disabled.";
+            break;
+          case "too-many-requests":
+            errorMessage = "Too many requests";
+            break;
+          case "operation-not-allowed":
+            errorMessage = "Signing in with Email and Password is not enabled.";
+            break;
+          default:
+            errorMessage = "An undefined Error happened.";
+        }
+        Fluttertoast.showToast(msg: errorMessage!);
+        print(error.code);
+      }
+    }
+  }
+
+  postDetailsToFirestore() async {
+    // calling our firestore
+    // calling our user model
+    // sedning these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    User? user = _auth.currentUser;
+
+    UserModel userModel = UserModel();
+
+    // writing all the values
+    userModel.email = user!.email;
+    userModel.uid = user.uid;
+    userModel.fullName = fullNameEditingController.text;
+
+    await firebaseFirestore
+        .collection("users")
+        .doc(user.uid)
+        .set(userModel.toMap());
+    Fluttertoast.showToast(msg: "Account created successfully :) ");
+
+    Navigator.pushAndRemoveUntil(
+        (context),
+        MaterialPageRoute(builder: (context) => OnboardingScreenOne()),
+        (route) => false);
   }
 }
