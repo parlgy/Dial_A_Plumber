@@ -265,6 +265,7 @@ class _SignupScreenState extends State<SignupScreen> {
         await _auth
             .createUserWithEmailAndPassword(email: email, password: password)
             .then((value) => {postDetailsToFirestore(),
+            Fluttertoast.showToast(msg: "Account created successfully"),
             Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (context) => OnboardingScreenOne()),
         )
@@ -321,8 +322,6 @@ class _SignupScreenState extends State<SignupScreen> {
         .doc(user.uid)
         .set(userModel.toMap());
     Fluttertoast.showToast(msg: "Account created successfully :) ");
-
-
 
     Navigator.pushAndRemoveUntil(
         (context),

@@ -18,6 +18,15 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  Future<void> _makePhoneCall() async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: "0759000575",
+    );
+    await launchUri(launchUri);
+  }
+
+
   int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {

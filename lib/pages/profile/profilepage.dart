@@ -1,4 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dial_a_plumber/models/user_models.dart';
 import 'package:dial_a_plumber/pages/dashboard/dashboardscreen.dart';
+import 'package:dial_a_plumber/pages/pages.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class EditProfilePage extends StatefulWidget {
@@ -18,6 +22,24 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
+
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel();
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      this.loggedInUser = UserModel.fromMap(value.data());
+      setState(() {});
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,14 +96,19 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     ),
                   ),
                   Expanded(child: Container()),
-                  Row(
-                    children: const [
-                      Icon(Icons.logout, size: 25),
-                      Text(
-                        'Logout',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
+                  GestureDetector(
+                    onTap: (){
+                      logout(context);
+                    },
+                    child: Row(
+                      children: const [
+                        Icon(Icons.logout, size: 25),
+                        Text(
+                          'Logout',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -106,9 +133,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   ),
                   Expanded(child: Container()),
                   Row(
-                    children: const [
+                    children: [
                       Text(
-                        'Joseph Kamau',
+                        "${loggedInUser.fullName}",
                         style: TextStyle(fontSize: 15),
                       ),
                     ],
@@ -128,9 +155,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   ),
                   Expanded(child: Container()),
                   Row(
-                    children: const [
+                    children: [
                       Text(
-                        'josephkamau@gmail.com',
+                        "${loggedInUser.email}",
                         style: TextStyle(fontSize: 15),
                       ),
                     ],
@@ -199,4 +226,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
       ),
     );
   }
-}
+
+  // the logout function
+  Future<void> logout(BuildContext context) async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => SigninScreen()));
+}}
