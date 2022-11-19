@@ -1,5 +1,6 @@
 import 'package:dial_a_plumber/models/user_models.dart';
 import 'package:dial_a_plumber/pages/dashboard/dashboardscreen.dart';
+import 'package:dial_a_plumber/pages/pages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -124,7 +125,7 @@ class _UserInformationState extends State<UserInformation> {
               const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => DashboardScreen()),);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => MainScreen()),);
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width,

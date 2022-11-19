@@ -1,5 +1,6 @@
 import 'package:dial_a_plumber/pages/profile/profilepage.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -23,11 +24,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
       scheme: 'tel',
       path: "0759000575",
     );
-    await launchUri(launchUri);
+    await launchUrl(launchUri);
   }
 
 
-  int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +78,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
           Container(
             margin:
-                const EdgeInsets.only(left: 30, right: 30, top: 70, bottom: 70),
+                const EdgeInsets.only(left: 30, right: 30, top: 70, bottom: 130),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(30),
@@ -122,22 +122,22 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   const SizedBox(
                     height: 40,
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: Colors.blue[900],
-                      borderRadius: BorderRadius.circular(50),
-                      boxShadow: const [
-                        BoxShadow(
-                            blurRadius: 1,
-                            offset: Offset(3, 3),
-                            color: Colors.white60)
-                      ],
-                    ),
-                    child: const Icon(
-                      Icons.phone,
-                      size: 50,
-                      color: Colors.white,
+                  MaterialButton(
+                    elevation: 5,
+                    onPressed: () {
+                      _makePhoneCall();
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        color: Colors.blue[900],
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: const Icon(
+                        Icons.phone,
+                        size: 50,
+                        color: Colors.white,
+                      ),
                     ),
                   )
                 ],
@@ -146,31 +146,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           )
         ],
       ),
-      bottomNavigationBar: BottomNavigation(),
-    );
-  }
-
-// Bottom nAVIGATION bAR mETHOD
-  BottomNavigationBar BottomNavigation() {
-    return BottomNavigationBar(
-      currentIndex: _currentIndex,
-      iconSize: 40,
-      selectedItemColor: Colors.blue[900],
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home_rounded),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.info_rounded),
-          label: 'About',
-        ),
-      ],
-      onTap: (index) {
-        setState(() {
-          _currentIndex = index;
-        });
-      },
+      // bottomNavigationBar: BottomNavigation(),
     );
   }
 }

@@ -36,6 +36,12 @@ class AppRouter {
       case EditProfilePage.routeName:
         return EditProfilePage.route();
 
+      case AboutScreen.routeName:
+        return AboutScreen.route();
+
+      case MainScreen.routeName:
+        return MainScreen.route();
+
       default:
         return _errorRoute();
     }
