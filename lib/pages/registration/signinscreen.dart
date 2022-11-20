@@ -2,6 +2,8 @@ import 'package:dial_a_plumber/pages/pages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SigninScreen extends StatefulWidget {
   const SigninScreen({super.key});
@@ -100,8 +102,11 @@ class _SigninScreenState extends State<SigninScreen> {
       child: MaterialButton(
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
-        onPressed: () {
+        onPressed: () async{
           signIn(emailController.text, passwordController.text);
+          final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+          sharedPreferences.setString('email', emailController.text);
+          Get.to(DashboardScreen());
         },
         child: const Text(
           "Login",
@@ -161,10 +166,7 @@ class _SigninScreenState extends State<SigninScreen> {
                         const Text("Don't have an account? "),
                         GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SignupScreen()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> SignupScreen()));
                           },
                           child: Text(
                             "SignUp",

@@ -1,9 +1,16 @@
 // import 'package:flutter/cupertino.dart';
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'pages.dart';
 
-class LandingScreen extends StatelessWidget {
+String? finalEmail;
+
+class LandingScreen extends StatefulWidget {
   const LandingScreen({super.key});
 
   static const String routeName = '/landing';
@@ -14,6 +21,27 @@ class LandingScreen extends StatelessWidget {
       builder: (context) => const LandingScreen(),
     );
   }
+  @override
+  State<LandingScreen> createState() => _LandingScreenState();
+}
+
+class _LandingScreenState extends State<LandingScreen> {
+@override
+void initState(){
+  getValidationData().whenComplete(() async{
+    Timer(Duration(seconds: 2), () => Get.to(finalEmail == null ? SigninScreen() : DashboardScreen()));
+  });
+  super.initState();
+}
+
+Future getValidationData() async {
+  final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  var obtainedEmal = sharedPreferences.getString('email');
+  setState(() {
+    finalEmail = obtainedEmal;
+  });
+  print(finalEmail);
+}
 
   @override
   Widget build(BuildContext context) {

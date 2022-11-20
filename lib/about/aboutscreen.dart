@@ -44,7 +44,7 @@ class _AboutScreenState extends State<AboutScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => EditProfilePage(),
+                  builder: (context) => const EditProfilePage(),
                 ),
               );
             },
@@ -59,20 +59,48 @@ class _AboutScreenState extends State<AboutScreen> {
           )
         ],
       ),
-      body: Column(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height / 2,
-            decoration: BoxDecoration(
-              image: DecorationImage(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height / 2,
+              decoration:const BoxDecoration(
+                image: DecorationImage(
 
-                image: AssetImage('assets/images/onboarding5.jpg')
+                  image: AssetImage('assets/images/onboarding5.jpg'),
+                  fit: BoxFit.cover,
 
+                )
               )
+            ),
+            const SizedBox(height:20),
+
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+              child: Column(
+                children: const [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text("About Us", style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),),
+                  ),
+                  SizedBox(height: 10,),
+                  Text('There was no time. He ran out of the door without half the stuff he needed for '
+                      'work, but it didn\'t matter. He was late and if he didn\'t make this meeting on time, someone\'s life may be in danger.', style: TextStyle(
+                    fontSize: 18,
+                  ),),
+                  Text(
+                      'work, but it didn\'t matter. He was late and if he didn\'t make this meeting on time, someone\'s life may be in danger.', style: TextStyle(
+                    fontSize: 18,
+                  ),),
+
+                ],
+              ),
             )
-          ),
-          Text('There was no time. He ran out of the door without half the stuff he needed for work, but it didn\'t matter. He was late and if he didn\'t make this meeting on time, someone\'s life may be in danger.')
-        ],
+          ],
+        ),
       ),
     );
 

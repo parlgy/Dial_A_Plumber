@@ -1,6 +1,7 @@
+import 'dart:async';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'config/app_router.dart';
 import 'pages/pages.dart';
 
 Future<void> main() async {
@@ -8,7 +9,10 @@ Future<void> main() async {
   await Firebase.initializeApp();
 
   runApp(MyApp());
+
 }
+
+// String? finalEmail;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -22,9 +26,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      onGenerateRoute: AppRouter.onGenerateRoute,
-      initialRoute: LandingScreen.routeName,
-      // home: const LandingScreen(),
+      // onGenerateRoute: AppRouter.onGenerateRoute,
+      // initialRoute: LandingScreen.routeName,
+      home: const SigninScreen(),
     );
+
   }
 }

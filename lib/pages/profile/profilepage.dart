@@ -102,10 +102,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     },
                     child: Row(
                       children: const [
-                        Icon(Icons.logout, size: 25),
+                        Icon(Icons.edit, size: 20),
+                        SizedBox(width: 10),
                         Text(
-                          'Logout',
-                          style: TextStyle(fontSize: 20),
+                          'Edit Profile',
+                          style: TextStyle(fontSize: 15),
                         ),
                       ],
                     ),
@@ -211,14 +212,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
               const SizedBox(height: 40),
               Row(
                 children: const [
-                  Icon(Icons.edit, size: 20),
-                  SizedBox(width: 10),
+                  Icon(Icons.logout, size: 20),
                   Text(
-                    'Edit Profile',
-                    style: TextStyle(fontSize: 15),
+                    'Logout',
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
+
               Container()
             ],
           ),

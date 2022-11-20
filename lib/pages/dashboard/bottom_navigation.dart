@@ -23,21 +23,21 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return CupertinoTabScaffold(
       resizeToAvoidBottomInset: true,
-      tabBar: CupertinoTabBar(
-        height: 75,
-        iconSize: 40,
 
-        border: Border.all(color: Colors.transparent),
-        // backgroundColor: Colors.white,
+      tabBar: CupertinoTabBar(
+        height: 60,
+        iconSize: 30,
+        backgroundColor: Colors.white70,
+        // border: Border.all(color: Colors.transparent),
         // inactiveColor: Colors.black,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home_filled),
-            // label: 'Home',
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.info),
-            // label: 'About',
+            label: 'About',
 
           ),
         ],
