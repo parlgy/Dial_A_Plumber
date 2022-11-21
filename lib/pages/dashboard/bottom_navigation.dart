@@ -25,8 +25,8 @@ class _MainScreenState extends State<MainScreen> {
       resizeToAvoidBottomInset: true,
 
       tabBar: CupertinoTabBar(
-        height: 60,
-        iconSize: 30,
+        height: 70,
+        iconSize: 40,
         backgroundColor: Colors.white70,
         // border: Border.all(color: Colors.transparent),
         // inactiveColor: Colors.black,

@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       ),
       // onGenerateRoute: AppRouter.onGenerateRoute,
       // initialRoute: LandingScreen.routeName,
-      home: const SigninScreen(),
+      home: const LandingScreen(),
     );
 
   }

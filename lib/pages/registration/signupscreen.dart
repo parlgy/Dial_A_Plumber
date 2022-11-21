@@ -36,6 +36,8 @@ class _SignupScreenState extends State<SignupScreen> {
   final emailEditingController = new TextEditingController();
   final passwordEditingController = new TextEditingController();
   final confirmPasswordEditingController = new TextEditingController();
+  final phoneNumberEditingController = new TextEditingController();
+  final regionEditingController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -92,6 +94,53 @@ class _SignupScreenState extends State<SignupScreen> {
         contentPadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
         hintText: 'name@bame.com',
         labelText: 'Email Address',
+        border: OutlineInputBorder(),
+      ),
+    );
+    // phone Number
+    final phoneNumberField = TextFormField(
+      autofocus: false,
+      controller: phoneNumberEditingController,
+      keyboardType: TextInputType.number,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return ("Phone Number cannot be Empty");
+        }
+        return null;
+      },
+      onSaved: (value) {
+        phoneNumberEditingController.text = value!;
+      },
+      textInputAction: TextInputAction.next,
+      decoration: const InputDecoration(
+        prefixIcon: Icon(Icons.phone),
+        contentPadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+        hintText: '+254',
+        labelText: 'Phone Number',
+        border: OutlineInputBorder(),
+      ),
+    );
+
+    // phone Number
+    final regionField = TextFormField(
+      autofocus: false,
+      controller: regionEditingController,
+      keyboardType: TextInputType.text,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return ("Region cannot be Empty");
+        }
+        return null;
+      },
+      onSaved: (value) {
+        regionEditingController.text = value!;
+      },
+      textInputAction: TextInputAction.next,
+      decoration: const InputDecoration(
+        prefixIcon: Icon(Icons.location_on),
+        contentPadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+        hintText: 'Kisumu',
+        labelText: 'Region',
         border: OutlineInputBorder(),
       ),
     );
@@ -204,9 +253,14 @@ class _SignupScreenState extends State<SignupScreen> {
                 const SizedBox(height: 10),
                 emailField,
                 const SizedBox(height: 10),
+                phoneNumberField,
+                const SizedBox(height: 10),
+                regionField,
+                const SizedBox(height: 10),
                 passwordField,
                 const SizedBox(height: 10),
                 confirmPasswordField,
+
                 const SizedBox(height: 30),
                 signupButton,
 
@@ -316,6 +370,8 @@ class _SignupScreenState extends State<SignupScreen> {
     userModel.email = user!.email;
     userModel.uid = user.uid;
     userModel.fullName = fullNameEditingController.text;
+    userModel.phoneNumber = phoneNumberEditingController.text;
+    userModel.region = regionEditingController.text;
 
     await firebaseFirestore
         .collection("users")

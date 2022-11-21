@@ -1,5 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dial_a_plumber/models/user_models.dart';
-import 'package:dial_a_plumber/pages/dashboard/dashboardscreen.dart';
 import 'package:dial_a_plumber/pages/pages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -52,8 +52,8 @@ class _UserInformationState extends State<UserInformation> {
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.account_circle),
-          contentPadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+          prefixIcon: const Icon(Icons.account_circle),
+          contentPadding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
           hintText: 'Enter Phone Number',
           labelText: 'Phone Number',
           border: OutlineInputBorder(
@@ -82,8 +82,8 @@ class _UserInformationState extends State<UserInformation> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.location_on_outlined),
-        contentPadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+        prefixIcon: const Icon(Icons.location_on_outlined),
+        contentPadding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
         hintText: 'Enter Your Region',
         labelText: 'Region',
         border: OutlineInputBorder(
@@ -152,45 +152,4 @@ class _UserInformationState extends State<UserInformation> {
     );
   }
 
-  // void signUp(String email, String password) async {
-  //   if (_formKey.currentState!.validate()) {
-  //       await _auth
-  //           .createUserWithEmailAndPassword(email: email, password: password)
-  //           .then(
-  //             (value) => {
-  //           postDetailsToFirestore(),
-  //         },
-  //       )
-  //           .catchError((e) {
-  //         Fluttertoast.showToast(msg: e!.message);
-  //       });
-  //     }
-  //   }
-  // }
-  //
-  // postDetailsToFirestore() async {
-  //   // calling our firestore
-  //   // calling our user Info
-  //   // sedning these values
-  //
-  //   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-  //   User? user = _auth.currentUser;
-  //
-  //   UserInfo userInfo = UserInfo();
-  //
-  //   // writing all the values
-  //   userInfo.phoneNumber = user.phoneNumber;
-  //   userInfo.region = regionEditingController.text;
-  //
-  //   await firebaseFirestore
-  //       .collection("users")
-  //       .doc(user.uid)
-  //       .set(userModel.toMap());
-  //   Fluttertoast.showToast(msg: "Account created successfully :) ");
-  //
-  //   Navigator.pushAndRemoveUntil(
-  //       (context),
-  //       MaterialPageRoute(builder: (context) => HomeScreen()),
-  //           (route) => false);
-  // }
 }

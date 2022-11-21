@@ -122,12 +122,10 @@ class _OnboardingScreenTwoState extends State<OnboardingScreenTwo> {
                       ),
                     ),
                     Expanded(child: Container()),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => OnboardingScreenThree()));
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => OnboardingScreenThree()),
+                                (route) => false);
                       },
                       child: Row(
                         children: [

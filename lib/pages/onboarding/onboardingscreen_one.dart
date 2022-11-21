@@ -111,7 +111,7 @@ class _OnboardingScreenOneState extends State<OnboardingScreenOne> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const UserInformation()));
+                                builder: (context) => const DashboardScreen()));
                       },
                       child: const Text(
                         'Skip',
@@ -119,13 +119,10 @@ class _OnboardingScreenOneState extends State<OnboardingScreenOne> {
                       ),
                     ),
                     Expanded(child: Container()),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const OnboardingScreenTwo()));
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => OnboardingScreenTwo()),
+                                (route) => false);
                       },
                       child: Row(
                         children: [

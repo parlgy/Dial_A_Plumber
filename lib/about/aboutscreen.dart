@@ -87,14 +87,10 @@ class _AboutScreenState extends State<AboutScreen> {
                     ),),
                   ),
                   SizedBox(height: 10,),
-                  Text('There was no time. He ran out of the door without half the stuff he needed for '
-                      'work, but it didn\'t matter. He was late and if he didn\'t make this meeting on time, someone\'s life may be in danger.', style: TextStyle(
+                  Text('Dial a plumber is an initiavite by SIELD NETWORK.....', style: TextStyle(
                     fontSize: 18,
                   ),),
-                  Text(
-                      'work, but it didn\'t matter. He was late and if he didn\'t make this meeting on time, someone\'s life may be in danger.', style: TextStyle(
-                    fontSize: 18,
-                  ),),
+
 
                 ],
               ),

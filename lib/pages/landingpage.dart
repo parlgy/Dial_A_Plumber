@@ -36,9 +36,9 @@ void initState(){
 
 Future getValidationData() async {
   final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  var obtainedEmal = sharedPreferences.getString('email');
+  var obtainedEmail = sharedPreferences.getString('email');
   setState(() {
-    finalEmail = obtainedEmal;
+    finalEmail = obtainedEmail;
   });
   print(finalEmail);
 }

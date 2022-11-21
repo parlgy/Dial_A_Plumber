@@ -97,9 +97,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   ),
                   Expanded(child: Container()),
                   GestureDetector(
-                    onTap: (){
-                      logout(context);
-                    },
+
                     child: Row(
                       children: const [
                         Icon(Icons.edit, size: 20),
@@ -128,7 +126,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     children: const [
                       Text(
                         'Full Name',
-                        style: TextStyle(fontSize: 15, color: Colors.grey),
+                        style: TextStyle(fontSize: 17, color: Colors.grey),
                       ),
                     ],
                   ),
@@ -137,7 +135,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     children: [
                       Text(
                         "${loggedInUser.fullName}",
-                        style: TextStyle(fontSize: 15),
+                        style: TextStyle(fontSize: 17),
                       ),
                     ],
                   ),
@@ -150,7 +148,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     children: const [
                       Text(
                         'Email Address',
-                        style: TextStyle(fontSize: 15, color: Colors.grey),
+                        style: TextStyle(fontSize: 17, color: Colors.grey),
                       ),
                     ],
                   ),
@@ -159,7 +157,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     children: [
                       Text(
                         "${loggedInUser.email}",
-                        style: TextStyle(fontSize: 15),
+                        style: TextStyle(fontSize: 17),
                       ),
                     ],
                   ),
@@ -172,16 +170,16 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     children: const [
                       Text(
                         'Phone Number',
-                        style: TextStyle(fontSize: 15, color: Colors.grey),
+                        style: TextStyle(fontSize: 17, color: Colors.grey),
                       ),
                     ],
                   ),
                   Expanded(child: Container()),
                   Row(
-                    children: const [
+                    children: [
                       Text(
-                        '+25400000000',
-                        style: TextStyle(fontSize: 15),
+                        "${loggedInUser.phoneNumber}",
+                        style: TextStyle(fontSize: 17),
                       ),
                     ],
                   ),
@@ -194,30 +192,35 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     children: const [
                       Text(
                         'Region',
-                        style: TextStyle(fontSize: 15, color: Colors.grey),
+                        style: TextStyle(fontSize: 17, color: Colors.grey),
                       ),
                     ],
                   ),
                   Expanded(child: Container()),
                   Row(
-                    children: const [
+                    children: [
                       Text(
-                        'Kisumu',
-                        style: TextStyle(fontSize: 15),
+                          "${loggedInUser.region}",
+                        style: TextStyle(fontSize: 17),
                       ),
                     ],
                   ),
                 ],
               ),
               const SizedBox(height: 40),
-              Row(
-                children: const [
-                  Icon(Icons.logout, size: 20),
-                  Text(
-                    'Logout',
-                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-                  ),
-                ],
+              GestureDetector(
+                onTap: (){
+                  logout(context);
+                },
+                child: Row(
+                  children: const [
+                    Icon(Icons.logout, size: 20),
+                    Text(
+                      'Logout',
+                      style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
               ),
 
               Container()
