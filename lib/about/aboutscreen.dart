@@ -67,32 +67,36 @@ class _AboutScreenState extends State<AboutScreen> {
               decoration:const BoxDecoration(
                 image: DecorationImage(
 
-                  image: AssetImage('assets/images/onboarding5.jpg'),
+                  image: AssetImage('assets/images/seld_logo.png'),
                   fit: BoxFit.cover,
 
                 )
               )
             ),
-            const SizedBox(height:20),
+            // const SizedBox(height:20),
 
             Padding(
               padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-              child: Column(
-                children: const [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text("About Us", style: TextStyle(
+              child:Align(
+                alignment: Alignment.center,
+                child: Column(
+
+                  children: const [
+                    Text("About Us", style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),),
-                  ),
-                  SizedBox(height: 10,),
-                  Text('Dial a plumber is an initiavite by SIELD NETWORK.....', style: TextStyle(
-                    fontSize: 18,
-                  ),),
+                    SizedBox(height: 10,),
+                    Text('Dial a plumber is an initiative of SELD (check SP) Network Kenya.', style: TextStyle(
+                      fontSize: 18,
+
+                    ),
+                      textAlign: TextAlign.center,
+                    ),
 
 
-                ],
+                  ],
+                ),
               ),
             )
           ],

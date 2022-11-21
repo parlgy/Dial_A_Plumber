@@ -1,14 +1,7 @@
-// import 'package:flutter/cupertino.dart';
-import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import 'pages.dart';
 
-String? finalEmail;
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({super.key});
@@ -26,34 +19,17 @@ class LandingScreen extends StatefulWidget {
 }
 
 class _LandingScreenState extends State<LandingScreen> {
-@override
-void initState(){
-  getValidationData().whenComplete(() async{
-    Timer(Duration(seconds: 2), () => Get.to(finalEmail == null ? SigninScreen() : DashboardScreen()));
-  });
-  super.initState();
-}
-
-Future getValidationData() async {
-  final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  var obtainedEmail = sharedPreferences.getString('email');
-  setState(() {
-    finalEmail = obtainedEmail;
-  });
-  print(finalEmail);
-}
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
               height: MediaQuery.of(context).size.height / 1.6,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/onboarding3.jpg'),
+                  image: AssetImage('assets/images/onboarding8.jpeg'),
                   fit: BoxFit.cover,
                 ),
               ),

@@ -34,13 +34,13 @@ class _OnboardingScreenOneState extends State<OnboardingScreenOne> {
                     bottomRight: Radius.circular(50),
                   ),
                   image: DecorationImage(
-                    image: AssetImage('assets/images/onboarding2.jpg'),
+                    image: AssetImage('assets/images/onboarding11.jpg'),
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
               const SizedBox(
-                height: 30,
+                height: 30
               ),
               const Text(
                 'Dial a Plumber',

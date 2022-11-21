@@ -33,13 +33,13 @@ class _OnboardingScreenTwoState extends State<OnboardingScreenTwo> {
                     bottomRight: Radius.circular(50),
                   ),
                   image: DecorationImage(
-                    image: AssetImage('assets/images/onboarding4.jpg'),
+                    image: AssetImage('assets/images/onboarding5.jpg'),
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
               const SizedBox(
-                height: 30,
+                height: 30
               ),
               Container(
                 margin: const EdgeInsets.only(left: 40, right: 40),
@@ -53,7 +53,7 @@ class _OnboardingScreenTwoState extends State<OnboardingScreenTwo> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 20
               ),
               Container(
                 margin: const EdgeInsets.only(left: 40, right: 40),
@@ -64,7 +64,7 @@ class _OnboardingScreenTwoState extends State<OnboardingScreenTwo> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 20
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
