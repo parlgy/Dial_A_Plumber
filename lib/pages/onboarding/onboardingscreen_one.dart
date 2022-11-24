@@ -1,6 +1,7 @@
 import 'package:dial_a_plumber/pages/onboarding/onboardingscreen_two.dart';
 import 'package:dial_a_plumber/pages/pages.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class OnboardingScreenOne extends StatefulWidget {
   const OnboardingScreenOne({super.key});
@@ -27,17 +28,18 @@ class _OnboardingScreenOneState extends State<OnboardingScreenOne> {
           child: Column(
             children: [
               Container(
-                height: MediaQuery.of(context).size.height / 1.6,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(50),
-                    bottomRight: Radius.circular(50),
-                  ),
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/onboarding11.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                height: MediaQuery.of(context).size.height / 1.8,
+                // decoration: const BoxDecoration(
+                //   borderRadius: BorderRadius.only(
+                //     bottomLeft: Radius.circular(50),
+                //     bottomRight: Radius.circular(50),
+                //   ),
+                //   image: DecorationImage(
+                //     image: AssetImage('assets/images/onboarding11.jpg'),
+                //     fit: BoxFit.cover,
+                //   ),
+                // ),
+                child: Lottie.asset('assets/lotti/two.json'),
               ),
               const SizedBox(
                 height: 30

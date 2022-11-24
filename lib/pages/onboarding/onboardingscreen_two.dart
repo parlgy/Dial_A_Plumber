@@ -26,14 +26,14 @@ class _OnboardingScreenTwoState extends State<OnboardingScreenTwo> {
           child: Column(
             children: [
               Container(
-                height: MediaQuery.of(context).size.height / 1.6,
+                height: MediaQuery.of(context).size.height / 1.8,
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(50),
                     bottomRight: Radius.circular(50),
                   ),
                   image: DecorationImage(
-                    image: AssetImage('assets/images/onboarding5.jpg'),
+                    image: AssetImage('assets/images/onboarding11.jpg'),
                     fit: BoxFit.cover,
                   ),
                 ),

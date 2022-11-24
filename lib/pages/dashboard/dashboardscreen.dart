@@ -2,9 +2,8 @@ import 'dart:async';
 
 import 'package:dial_a_plumber/pages/profile/profilepage.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:lottie/lottie.dart';
 
 import '../pages.dart';
 
@@ -61,12 +60,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
               );
             },
             child: Container(
-              margin: const EdgeInsets.only(right: 20),
-              child: const Icon(
-                Icons.settings,
-                size: 30,
-                color: Colors.black,
-              ),
+              // margin: const EdgeInsets.only(right: 20),
+              // child: const Icon(
+              //   Icons.settings,
+              //   size: 30,
+              //   color: Colors.black,
+              // ),
             ),
           )
         ],
@@ -83,7 +82,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
           Container(
             margin:
-                const EdgeInsets.only(left: 30, right: 30, top: 70, bottom: 130),
+                const EdgeInsets.only(left: 30, right: 30, top: 70, bottom: 70),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(30),
@@ -134,16 +133,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         _makePhoneCall();
                       },
                       child: Container(
-                        padding: const EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          color: Colors.blue[900],
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        child: const Icon(
-                          Icons.phone,
-                          size: 50,
-                          color: Colors.white,
-                        ),
+                        // padding: const EdgeInsets.all(20),
+                        // decoration: BoxDecoration(
+                        //   color: Colors.blue[900],
+                        //   borderRadius: BorderRadius.circular(50),
+                        // ),
+                        // child: const Icon(
+                        //   Icons.phone,
+                        //   size: 50,
+                        //   color: Colors.white,
+                        // ),
+                        child: Lottie.asset('assets/lotti/three.json', height: 200, reverse: true, repeat: true, fit: BoxFit.cover),
                       ),
                     )
                   ],

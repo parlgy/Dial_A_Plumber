@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'pages.dart';
 
 
@@ -16,6 +17,7 @@ class LandingScreen extends StatefulWidget {
   }
   @override
   State<LandingScreen> createState() => _LandingScreenState();
+
 }
 
 class _LandingScreenState extends State<LandingScreen> {
@@ -26,7 +28,7 @@ class _LandingScreenState extends State<LandingScreen> {
         child: Column(
           children: [
             Container(
-              height: MediaQuery.of(context).size.height / 1.6,
+              height: MediaQuery.of(context).size.height / 1.4,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/onboarding8.jpeg'),
@@ -35,7 +37,7 @@ class _LandingScreenState extends State<LandingScreen> {
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 20
             ),
             Column(
               children: const [
@@ -49,13 +51,13 @@ class _LandingScreenState extends State<LandingScreen> {
                 Text(
                   'Dial a Plumber',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 20
                   ),
                 ),
               ],
             ),
             const SizedBox(
-              height: 50,
+              height: 30
             ),
             Container(
               margin: const EdgeInsets.only(left: 20, right: 20),
@@ -65,24 +67,12 @@ class _LandingScreenState extends State<LandingScreen> {
                       MaterialPageRoute(builder: (context) => SignupScreen()));
                 },
                 child: const LandingPageButtonFilled(
-                  buttonName2: 'Sign up',
+                  buttonName2: 'Get Started',
                 ),
               ),
             ),
             const SizedBox(
               height: 10,
-            ),
-            Container(
-              margin: const EdgeInsets.only(left: 20, right: 20),
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SigninScreen()));
-                },
-                child: const LandingPageButtons(
-                  buttonName: 'Sign in',
-                ),
-              ),
             ),
           ],
         ),

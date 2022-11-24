@@ -23,8 +23,8 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return CupertinoTabScaffold(
       resizeToAvoidBottomInset: true,
-
       tabBar: CupertinoTabBar(
+        currentIndex: 0,
         height: 70,
         iconSize: 40,
         backgroundColor: Colors.white70,
@@ -38,7 +38,6 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.info),
             label: 'About',
-
           ),
         ],
       ),

@@ -1,7 +1,4 @@
-import 'dart:ffi';
-
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserModel {
   String? uid;
@@ -9,8 +6,9 @@ class UserModel {
   String? email;
   String? phoneNumber;
   String? region;
+  String? personType;
 
-  UserModel({this.uid, this.fullName, this.email, this.phoneNumber, this.region});
+  UserModel({this.uid, this.fullName,this.personType, this.email, this.phoneNumber, this.region});
 
   // recieve Data from the server
   factory UserModel.fromMap(map) {
@@ -19,7 +17,8 @@ class UserModel {
       fullName: map['fullName'],
       email: map['email'],
       phoneNumber: map['phoneNumber'],
-      region: map['region']
+      region: map['region'],
+      personType: map['personType']
     );
   }
 
@@ -30,37 +29,8 @@ class UserModel {
       'fullName': fullName,
       'email': email,
       'phoneNumber': phoneNumber,
-      'region': region
+      'region': region,
+      'personType': personType,
     };
   }
 }
-
-
-
-//User information Model
-
-// class UserInfo{
-//   String? uid;
-//   Int? phoneNumber;
-//   String? region;
-//
-//   UserInfo({this.phoneNumber, this.region, this.uid});
-//
-//   factory UserInfo.fromMap(map){
-//     return UserInfo(
-//       uid: map['uid'],
-//       phoneNumber: map['phoneNumber'],
-//       region: map['region'],
-//
-//     );
-//   }
-//
-//
-//   Map<String, dynamic> toMap(){
-//     return{
-//       'uid': uid,
-//       'phoneNumber': phoneNumber,
-//       'region': region
-//     };
-//   }
-// }

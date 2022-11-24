@@ -65,7 +65,8 @@ class _SigninScreenState extends State<SigninScreen> {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
           ),
-        ));
+        )
+    );
 
     //password field
     final passwordField = TextFormField(
@@ -93,7 +94,8 @@ class _SigninScreenState extends State<SigninScreen> {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
           ),
-        ));
+        )
+    );
 
     final loginButton = Material(
       elevation: 5,
@@ -218,7 +220,6 @@ class _SigninScreenState extends State<SigninScreen> {
         switch (error.code) {
           case "invalid-email":
             errorMessage = "Your email address appears to be malformed.";
-
             break;
           case "wrong-password":
             errorMessage = "Your password is wrong.";

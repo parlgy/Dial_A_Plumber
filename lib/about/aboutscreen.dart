@@ -41,12 +41,12 @@ class _AboutScreenState extends State<AboutScreen> {
         actions: [
           InkWell(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const EditProfilePage(),
-                ),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => const EditProfilePage(),
+              //   ),
+              // );
             },
             child: Container(
               margin: const EdgeInsets.only(right: 20),

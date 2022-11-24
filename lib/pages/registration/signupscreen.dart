@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+
 import '../pages.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -28,20 +29,53 @@ class _SignupScreenState extends State<SignupScreen> {
   // string for displaying the error Message
   String? errorMessage;
 
+
   // Our form Key
   final _formKey = GlobalKey<FormState>();
+
 
   // Editing Controller
   final fullNameEditingController = new TextEditingController();
   final emailEditingController = new TextEditingController();
   final passwordEditingController = new TextEditingController();
-  final confirmPasswordEditingController = new TextEditingController();
   final phoneNumberEditingController = new TextEditingController();
   final regionEditingController = new TextEditingController();
+  final personTypeEditingController = new TextEditingController();
+
+  postDetailsToFirestore() async {
+    // calling our firestore
+    // calling our user model
+    // sedning these values
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    // User? user = _auth.currentUser;
+
+
+    UserModel userModel = UserModel();
+
+    // writing all the values
+    userModel.email = emailEditingController.text;
+    userModel.fullName = fullNameEditingController.text;
+    userModel.personType = personTypeEditingController.text;
+    userModel.phoneNumber = phoneNumberEditingController.text;
+    userModel.region = regionEditingController.text;
+
+    // await firebaseFirestore
+    firebaseFirestore
+    .collection("users")
+        .doc(userModel.uid)
+        .set(userModel.toMap());
+    Fluttertoast.showToast(msg: "Account created successfully :) ");
+
+    Navigator.pushAndRemoveUntil(
+    (context),
+    MaterialPageRoute(builder: (context) => OnboardingScreenOne()),
+    (route) => false);
+  }
 
   @override
   Widget build(BuildContext context) {
-    //  Full Name field
+     // Full Name field
     final fullNameField = TextFormField(
       autofocus: false,
       controller: fullNameEditingController,
@@ -97,6 +131,7 @@ class _SignupScreenState extends State<SignupScreen> {
         border: OutlineInputBorder(),
       ),
     );
+
     // phone Number
     final phoneNumberField = TextFormField(
       autofocus: false,
@@ -121,7 +156,7 @@ class _SignupScreenState extends State<SignupScreen> {
       ),
     );
 
-    // phone Number
+    // region Number
     final regionField = TextFormField(
       autofocus: false,
       controller: regionEditingController,
@@ -144,6 +179,31 @@ class _SignupScreenState extends State<SignupScreen> {
         border: OutlineInputBorder(),
       ),
     );
+
+    //Person Field
+    final personTypeField = TextFormField(
+      autofocus: false,
+      controller: personTypeEditingController,
+      keyboardType: TextInputType.name,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return ("This cannot be Empty");
+        }
+        return null;
+      },
+      onSaved: (value) {
+        personTypeEditingController.text = value!;
+      },
+      textInputAction: TextInputAction.next,
+      decoration: const InputDecoration(
+        prefixIcon: Icon(Icons.person),
+        contentPadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+        hintText: 'Contractor, Business, Personal',
+        labelText: 'Who are you?',
+        border: OutlineInputBorder(),
+      ),
+    );
+
     //  password field
     final passwordField = TextFormField(
       autofocus: false,
@@ -170,30 +230,6 @@ class _SignupScreenState extends State<SignupScreen> {
         border: OutlineInputBorder(),
       ),
     );
-    // Confirm Password
-    final confirmPasswordField = TextFormField(
-      autofocus: false,
-      obscureText: true,
-      controller: confirmPasswordEditingController,
-      validator: (value) {
-        if (confirmPasswordEditingController.text !=
-            passwordEditingController.text) {
-          return "Password don't match";
-        }
-        return null;
-      },
-      onSaved: (value) {
-        confirmPasswordEditingController.text = value!;
-      },
-      textInputAction: TextInputAction.done,
-      decoration: const InputDecoration(
-        prefixIcon: Icon(Icons.password),
-        contentPadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-        hintText: 'Confirm Password',
-        labelText: 'Confirm Password',
-        border: OutlineInputBorder(),
-      ),
-    );
 
     // Button
     final signupButton = Material(
@@ -204,7 +240,7 @@ class _SignupScreenState extends State<SignupScreen> {
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
         onPressed: () {
-          signUp(emailEditingController.text, passwordEditingController.text);
+          postDetailsToFirestore();
         },
         child: const Text(
           "Signup",
@@ -217,8 +253,6 @@ class _SignupScreenState extends State<SignupScreen> {
         ),
       ),
     );
-    //
-    //
     //
     return Scaffold(
       body: SingleChildScrollView(
@@ -253,14 +287,11 @@ class _SignupScreenState extends State<SignupScreen> {
                 const SizedBox(height: 10),
                 emailField,
                 const SizedBox(height: 10),
+                personTypeField,
+                const SizedBox(height: 10),
                 phoneNumberField,
                 const SizedBox(height: 10),
                 regionField,
-                const SizedBox(height: 10),
-                passwordField,
-                const SizedBox(height: 10),
-                confirmPasswordField,
-
                 const SizedBox(height: 30),
                 signupButton,
 
@@ -312,76 +343,6 @@ class _SignupScreenState extends State<SignupScreen> {
       ),
     );
   }
-
-  void signUp(String email, String password) async {
-    if (_formKey.currentState!.validate()) {
-      try {
-        await _auth
-            .createUserWithEmailAndPassword(email: email, password: password)
-            .then((value) => {postDetailsToFirestore(),
-            Fluttertoast.showToast(msg: "Account created successfully"),
-            Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => OnboardingScreenOne()),
-        )
-        },)
-            .catchError((e) {
-          Fluttertoast.showToast(msg: e!.message);
-        });
-      } on FirebaseAuthException catch (error) {
-        switch (error.code) {
-          case "invalid-email":
-            errorMessage = "Your email address appears to be malformed.";
-            break;
-          case "wrong-password":
-            errorMessage = "Your password is wrong.";
-            break;
-          case "user-not-found":
-            errorMessage = "User with this email doesn't exist.";
-            break;
-          case "user-disabled":
-            errorMessage = "User with this email has been disabled.";
-            break;
-          case "too-many-requests":
-            errorMessage = "Too many requests";
-            break;
-          case "operation-not-allowed":
-            errorMessage = "Signing in with Email and Password is not enabled.";
-            break;
-          default:
-            errorMessage = "An undefined Error happened.";
-        }
-        Fluttertoast.showToast(msg: errorMessage!);
-        print(error.code);
-      }
-    }
   }
 
-  postDetailsToFirestore() async {
-    // calling our firestore
-    // calling our user model
-    // sedning these values
 
-    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-    User? user = _auth.currentUser;
-
-    UserModel userModel = UserModel();
-
-    // writing all the values
-    userModel.email = user!.email;
-    userModel.uid = user.uid;
-    userModel.fullName = fullNameEditingController.text;
-    userModel.phoneNumber = phoneNumberEditingController.text;
-    userModel.region = regionEditingController.text;
-
-    await firebaseFirestore
-        .collection("users")
-        .doc(user.uid)
-        .set(userModel.toMap());
-    Fluttertoast.showToast(msg: "Account created successfully :) ");
-
-    Navigator.pushAndRemoveUntil(
-        (context),
-        MaterialPageRoute(builder: (context) => OnboardingScreenOne()),
-        (route) => false);
-  }
-}

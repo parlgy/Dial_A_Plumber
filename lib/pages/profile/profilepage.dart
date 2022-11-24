@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dial_a_plumber/models/user_models.dart';
-import 'package:dial_a_plumber/pages/dashboard/dashboardscreen.dart';
 import 'package:dial_a_plumber/pages/pages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -135,7 +134,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     children: [
                       Text(
                         "${loggedInUser.fullName}",
-                        style: TextStyle(fontSize: 17),
+                        style:const TextStyle(fontSize: 17),
                       ),
                     ],
                   ),

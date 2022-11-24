@@ -120,7 +120,7 @@ class _OnboardingScreenTwoState extends State<OnboardingScreenThree> {
                     Expanded(child: Container()),
                     GestureDetector(
                       onTap: (){
-                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => MainScreen()),
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => DashboardScreen()),
                                 (route) => false);
                       },
                       child: Row(

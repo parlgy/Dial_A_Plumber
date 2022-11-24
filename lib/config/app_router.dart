@@ -33,8 +33,8 @@ class AppRouter {
       case DashboardScreen.routeName:
         return DashboardScreen.route();
 
-      case EditProfilePage.routeName:
-        return EditProfilePage.route();
+      // case EditProfilePage.routeName:
+      //   return EditProfilePage.route();
 
       case AboutScreen.routeName:
         return AboutScreen.route();
