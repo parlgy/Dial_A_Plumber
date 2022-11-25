@@ -58,7 +58,7 @@ class _OnboardingScreenTwoState extends State<OnboardingScreenTwo> {
               Container(
                 margin: const EdgeInsets.only(left: 40, right: 40),
                 child: const Text(
-                  'This initiative helps to empower women in the field of plumber. Join us to support this',
+                  'This initiative gives preference to promoting female artisans!',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 17),
                 ),

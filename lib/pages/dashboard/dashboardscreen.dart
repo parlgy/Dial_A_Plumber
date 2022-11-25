@@ -26,7 +26,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Future<void> _makePhoneCall() async {
     final Uri launchUri = Uri(
       scheme: 'tel',
-      path: "0759000575",
+      path: "+254721953738",
     );
     await launchUrl(launchUri);
   }
