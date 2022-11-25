@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:dial_a_plumber/pages/profile/profilepage.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:lottie/lottie.dart';
@@ -36,12 +35,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 1,
+        elevation: 0,
         leadingWidth: 200,
-        toolbarHeight: 80,
-        backgroundColor: Colors.white,
+        toolbarHeight: 120,
+        backgroundColor: Colors.transparent,
         leading: Container(
-          height: 40,
+          height: 70,
           margin: const EdgeInsets.only(left: 20),
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -49,105 +48,120 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
           ),
         ),
-        actions: [
-          InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => EditProfilePage(),
-                ),
-              );
-            },
-            child: Container(
-              // margin: const EdgeInsets.only(right: 20),
-              // child: const Icon(
-              //   Icons.settings,
-              //   size: 30,
-              //   color: Colors.black,
-              // ),
-            ),
-          )
-        ],
       ),
       body: Stack(
         children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/map.png'),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          Container(
-            margin:
-                const EdgeInsets.only(left: 30, right: 30, top: 70, bottom: 70),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: Center(
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  // crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Get a',
-                      textAlign: TextAlign.center,
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(left:20.0, right: 20.0, ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        child: Column(
+                          children: const [
+                            Text(
+                              'Do you need',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              'A Plumber ?',
+                              style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(child: Container()),
+                      Lottie.asset('assets/lotti/one.json', height: 130,repeat: true),
+                    ],
+                  ),
+                  const SizedBox(
+                      height: 10
+                  ),
+                  Container(
+                    child: const Text('Dial a plumber is an '
+                        'initiative by SELD NETWORK KENYA that gives preference to promoting female artisans in the field of plumbing.',
+                    style: TextStyle(
+                      fontSize: 15
+                    ),
+                    ),
+                  ),
+                  const SizedBox(
+                      height: 20
+                  ),
+                  Row(
+                    children: const[
+                      Text(
+                          'Read More',
                       style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
+                          // fontSize: ,
+                        fontWeight: FontWeight.bold
                       ),
                     ),
-                    const Text(
-                      'Plumber',
-                      style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const Text(
-                      'Today',
-                      style: TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.orange),
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    const Text(
-                      'Click the button below.',
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    MaterialButton(
-                      elevation: 5,
-                      onPressed: () {
-                        _makePhoneCall();
-                      },
-                      child: Container(
-                        // padding: const EdgeInsets.all(20),
-                        // decoration: BoxDecoration(
-                        //   color: Colors.blue[900],
-                        //   borderRadius: BorderRadius.circular(50),
-                        // ),
-                        // child: const Icon(
-                        //   Icons.phone,
-                        //   size: 50,
-                        //   color: Colors.white,
-                        // ),
-                        child: Lottie.asset('assets/lotti/three.json', height: 200, reverse: true, repeat: true, fit: BoxFit.cover),
-                      ),
-                    )
+                      SizedBox(width: 10),
+                      Icon(Icons.arrow_forward, size: 20,)
                   ],
-                ),
+                  ),
+
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Column(
+                    children: [
+                      MaterialButton(
+                        elevation: 5,
+                        onPressed: () {
+                          _makePhoneCall();
+                        },
+                        child: Center(
+                          child: Container(
+                            child: Lottie.asset('assets/lotti/three.json', height: 200, reverse: true, repeat: true, fit: BoxFit.cover),
+                          ),
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(bottom:20.0),
+                        child: Center(
+                          child: Text(
+                            'Call Us Today',
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                      ),
+
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top:50),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('Powered By'),
+                        Container(
+                          height: 80,
+                          width: 80,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/images/seld_logo.png'),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+
               ),
             ),
           )

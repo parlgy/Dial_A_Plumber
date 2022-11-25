@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dial_a_plumber/models/user_models.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get_utils/src/extensions/dynamic_extensions.dart';
 
 
 import '../pages.dart';
@@ -24,7 +24,6 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  final _auth = FirebaseAuth.instance;
 
   // string for displaying the error Message
   String? errorMessage;
@@ -42,36 +41,38 @@ class _SignupScreenState extends State<SignupScreen> {
   final regionEditingController = new TextEditingController();
   final personTypeEditingController = new TextEditingController();
 
-  postDetailsToFirestore() async {
-    // calling our firestore
-    // calling our user model
-    // sedning these values
+
+  postDetailsToFirestore(){
+
+
 
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-    // User? user = _auth.currentUser;
+      // User? user = _auth.currentUser;
 
 
-    UserModel userModel = UserModel();
+      UserModel userModel = UserModel();
 
-    // writing all the values
-    userModel.email = emailEditingController.text;
-    userModel.fullName = fullNameEditingController.text;
-    userModel.personType = personTypeEditingController.text;
-    userModel.phoneNumber = phoneNumberEditingController.text;
-    userModel.region = regionEditingController.text;
+      // writing all the values
+      userModel.email = emailEditingController.text;
+      userModel.fullName = fullNameEditingController.text;
+      userModel.personType = personTypeEditingController.text;
+      userModel.phoneNumber = phoneNumberEditingController.text;
+      userModel.region = regionEditingController.text;
 
-    // await firebaseFirestore
-    firebaseFirestore
-    .collection("users")
-        .doc(userModel.uid)
-        .set(userModel.toMap());
-    Fluttertoast.showToast(msg: "Account created successfully :) ");
+      // await firebaseFirestore
+      firebaseFirestore
+      .collection("users")
+          .doc(userModel.uid)
+          .set(userModel.toMap());
 
-    Navigator.pushAndRemoveUntil(
-    (context),
-    MaterialPageRoute(builder: (context) => OnboardingScreenOne()),
-    (route) => false);
-  }
+      if(_formKey.currentState!.validate()) {
+        Navigator.pushAndRemoveUntil(
+            (context),
+            MaterialPageRoute(builder: (context) => DashboardScreen()),
+                (route) => false);
+        Fluttertoast.showToast(msg: "Submission Successful");
+      }
+      }
 
   @override
   Widget build(BuildContext context) {
@@ -99,35 +100,6 @@ class _SignupScreenState extends State<SignupScreen> {
         contentPadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
         hintText: 'Full Name',
         labelText: 'Full Name',
-        border: OutlineInputBorder(),
-      ),
-    );
-
-    //  email field
-    final emailField = TextFormField(
-      autofocus: false,
-      controller: emailEditingController,
-      keyboardType: TextInputType.emailAddress,
-      validator: (value) {
-        if (value!.isEmpty) {
-          return ("Please Enter Your Email");
-        }
-        // reg expression for email validation
-        if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
-            .hasMatch(value)) {
-          return ("Please Enter a valid email");
-        }
-        return null;
-      },
-      onSaved: (value) {
-        emailEditingController.text = value!;
-      },
-      textInputAction: TextInputAction.next,
-      decoration: const InputDecoration(
-        prefixIcon: Icon(Icons.email),
-        contentPadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-        hintText: 'name@bame.com',
-        labelText: 'Email Address',
         border: OutlineInputBorder(),
       ),
     );
@@ -204,33 +176,6 @@ class _SignupScreenState extends State<SignupScreen> {
       ),
     );
 
-    //  password field
-    final passwordField = TextFormField(
-      autofocus: false,
-      obscureText: true,
-      controller: passwordEditingController,
-      validator: (value) {
-        RegExp regex = new RegExp(r'^.{6,}$');
-        if (value!.isEmpty) {
-          return ("Password is required for login");
-        }
-        if (!regex.hasMatch(value)) {
-          return ("Enter Valid Password(Min. 6 Character)");
-        }
-      },
-      onSaved: (value) {
-        passwordEditingController.text = value!;
-      },
-      textInputAction: TextInputAction.done,
-      decoration: const InputDecoration(
-        prefixIcon: Icon(Icons.password),
-        contentPadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-        hintText: 'Password',
-        labelText: 'Password',
-        border: OutlineInputBorder(),
-      ),
-    );
-
     // Button
     final signupButton = Material(
       elevation: 5,
@@ -243,7 +188,7 @@ class _SignupScreenState extends State<SignupScreen> {
           postDetailsToFirestore();
         },
         child: const Text(
-          "Signup",
+          "Submit",
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 20,
@@ -262,64 +207,29 @@ class _SignupScreenState extends State<SignupScreen> {
             key: _formKey,
             child: Column(
               children: <Widget>[
-                const SizedBox(height: 100),
-                Container(
-                  height: 70,
-                  width: 70,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/logo2.png'),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
+                const SizedBox(height: 50),
                 const Text(
-                  'Create Your Account',
+                  'Help us reach where you are in no time',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 45,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+                const SizedBox(
+                  height: 10
+                ),
                 const SizedBox(height: 50),
                 fullNameField,
-                const SizedBox(height: 10),
-                emailField,
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 personTypeField,
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 phoneNumberField,
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 regionField,
                 const SizedBox(height: 30),
                 signupButton,
-
                 // ForgotPassword
                 const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text('Already have an account?'),
-                    const SizedBox(width: 5),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => SigninScreen(),
-                          ),
-                        );
-                      },
-                      child: const Text(
-                        'Sign in',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
                 SizedBox(height: MediaQuery.of(context).size.height / 14),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

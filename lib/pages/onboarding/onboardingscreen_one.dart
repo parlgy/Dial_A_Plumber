@@ -28,7 +28,7 @@ class _OnboardingScreenOneState extends State<OnboardingScreenOne> {
           child: Column(
             children: [
               Container(
-                height: MediaQuery.of(context).size.height / 1.8,
+                height: MediaQuery.of(context).size.height / 1.6,
                 // decoration: const BoxDecoration(
                 //   borderRadius: BorderRadius.only(
                 //     bottomLeft: Radius.circular(50),
@@ -41,9 +41,7 @@ class _OnboardingScreenOneState extends State<OnboardingScreenOne> {
                 // ),
                 child: Lottie.asset('assets/lotti/two.json'),
               ),
-              const SizedBox(
-                height: 30
-              ),
+
               const Text(
                 'Dial a Plumber',
                 style: TextStyle(
@@ -57,13 +55,13 @@ class _OnboardingScreenOneState extends State<OnboardingScreenOne> {
               Container(
                 margin: const EdgeInsets.only(left: 40, right: 40),
                 child: const Text(
-                  'I haven\'t bailed on writing. Look, I\'m generating a random paragraph at this very moment in an attempt.',
+                  'We help you with the best and experienced plumbers in the country at any time',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 17),
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 40,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -113,7 +111,7 @@ class _OnboardingScreenOneState extends State<OnboardingScreenOne> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const DashboardScreen()));
+                                builder: (context) => const SignupScreen()));
                       },
                       child: const Text(
                         'Skip',
@@ -123,8 +121,7 @@ class _OnboardingScreenOneState extends State<OnboardingScreenOne> {
                     Expanded(child: Container()),
                     GestureDetector(
                       onTap: (){
-                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => OnboardingScreenTwo()),
-                                (route) => false);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => OnboardingScreenTwo()));
                       },
                       child: Row(
                         children: [

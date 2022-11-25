@@ -54,7 +54,7 @@ class _OnboardingScreenTwoState extends State<OnboardingScreenThree> {
               Container(
                 margin: const EdgeInsets.only(left: 40, right: 40),
                 child: const Text(
-                  'I haven\'t bailed on writing. Look, I\'m generating a random paragraph at this very moment in an attempt.',
+                  'Make a call today and get the best plumbing services',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 17),
                 ),
@@ -110,7 +110,7 @@ class _OnboardingScreenTwoState extends State<OnboardingScreenThree> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => UserInformation()));
+                                builder: (context) => SignupScreen()));
                       },
                       child: const Text(
                         'Skip',
@@ -118,10 +118,9 @@ class _OnboardingScreenTwoState extends State<OnboardingScreenThree> {
                       ),
                     ),
                     Expanded(child: Container()),
-                    GestureDetector(
+                    InkWell(
                       onTap: (){
-                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => DashboardScreen()),
-                                (route) => false);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => SignupScreen()));
                       },
                       child: Row(
                         children: [

@@ -58,7 +58,7 @@ class _OnboardingScreenTwoState extends State<OnboardingScreenTwo> {
               Container(
                 margin: const EdgeInsets.only(left: 40, right: 40),
                 child: const Text(
-                  'I haven\'t bailed on writing. Look, I\'m generating a random paragraph',
+                  'This initiative helps to empower women in the field of plumber. Join us to support this',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 17),
                 ),
@@ -114,7 +114,7 @@ class _OnboardingScreenTwoState extends State<OnboardingScreenTwo> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => UserInformation()));
+                                builder: (context) => SignupScreen()));
                       },
                       child: const Text(
                         'Skip',
@@ -124,8 +124,7 @@ class _OnboardingScreenTwoState extends State<OnboardingScreenTwo> {
                     Expanded(child: Container()),
                     GestureDetector(
                       onTap: (){
-                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => OnboardingScreenThree()),
-                                (route) => false);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => OnboardingScreenThree()));
                       },
                       child: Row(
                         children: [

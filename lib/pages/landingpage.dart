@@ -64,7 +64,7 @@ class _LandingScreenState extends State<LandingScreen> {
               child: InkWell(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignupScreen()));
+                      MaterialPageRoute(builder: (context) => OnboardingScreenOne()));
                 },
                 child: const LandingPageButtonFilled(
                   buttonName2: 'Get Started',
