@@ -15,7 +15,6 @@ class LandingPageButtonFilled extends StatelessWidget {
 
       child: Container(
         width: MediaQuery.of(context).size.width,
-        // margin: const EdgeInsets.only(left: 20, right: 20),
         padding: const EdgeInsets.only(top: 15, bottom: 15),
         decoration: BoxDecoration(
           color: Colors.blue.shade900,
