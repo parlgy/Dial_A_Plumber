@@ -3,19 +3,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class UserModel {
   String? uid;
   String? fullName;
-  String? email;
   String? phoneNumber;
   String? region;
   String? personType;
 
-  UserModel({this.uid, this.fullName,this.personType, this.email, this.phoneNumber, this.region});
+  UserModel({this.uid, this.fullName,this.personType, this.phoneNumber, this.region});
 
   // recieve Data from the server
   factory UserModel.fromMap(map) {
     return UserModel(
       uid: map['uid'],
       fullName: map['fullName'],
-      email: map['email'],
       phoneNumber: map['phoneNumber'],
       region: map['region'],
       personType: map['personType']
@@ -27,7 +25,6 @@ class UserModel {
     return {
       'uid': uid,
       'fullName': fullName,
-      'email': email,
       'phoneNumber': phoneNumber,
       'region': region,
       'personType': personType,

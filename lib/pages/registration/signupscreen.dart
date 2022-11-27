@@ -25,53 +25,40 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
 
-  // string for displaying the error Message
-  String? errorMessage;
-
 
   // Our form Key
   final _formKey = GlobalKey<FormState>();
 
-
   // Editing Controller
   final fullNameEditingController = new TextEditingController();
-  final emailEditingController = new TextEditingController();
   final passwordEditingController = new TextEditingController();
   final phoneNumberEditingController = new TextEditingController();
   final regionEditingController = new TextEditingController();
   final personTypeEditingController = new TextEditingController();
 
 
-  postDetailsToFirestore(){
-
-
-
+  postDetailsToFirestore() {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-      // User? user = _auth.currentUser;
+    UserModel userModel = UserModel();
 
+    // writing all the values
+    userModel.fullName = fullNameEditingController.text;
+    userModel.personType = personTypeEditingController.text;
+    userModel.phoneNumber = phoneNumberEditingController.text;
+    userModel.region = regionEditingController.text;
 
-      UserModel userModel = UserModel();
-
-      // writing all the values
-      userModel.email = emailEditingController.text;
-      userModel.fullName = fullNameEditingController.text;
-      userModel.personType = personTypeEditingController.text;
-      userModel.phoneNumber = phoneNumberEditingController.text;
-      userModel.region = regionEditingController.text;
-
-      // await firebaseFirestore
+    if(_formKey.currentState!.validate()){
       firebaseFirestore
-      .collection("users")
+          .collection("users")
           .doc(userModel.uid)
           .set(userModel.toMap());
 
-      if(_formKey.currentState!.validate()) {
-        Navigator.pushAndRemoveUntil(
-            (context),
-            MaterialPageRoute(builder: (context) => DashboardScreen()),
-                (route) => false);
-        Fluttertoast.showToast(msg: "Submission Successful");
-      }
+      Navigator.pushAndRemoveUntil(
+              (context),
+              MaterialPageRoute(builder: (context) => DashboardScreen()),
+              (route) => false);
+              Fluttertoast.showToast(msg: "Submission Successful");
+    }
       }
 
   @override
