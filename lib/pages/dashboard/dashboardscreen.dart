@@ -18,6 +18,8 @@ class DashboardScreen extends StatefulWidget {
     );
   }
 
+
+
   @override
   State<DashboardScreen> createState() => _DashboardScreenState();
 }
@@ -66,14 +68,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               'Do you need',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 30,
+                                fontSize: 50,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             Text(
                               'A Plumber ?',
                               style: TextStyle(
-                                fontSize: 30,
+                                fontSize: 50,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -81,7 +83,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ),
                       ),
                       Expanded(child: Container()),
-                      Lottie.asset('assets/lotti/one.json', height: 130,repeat: true),
+                      // Lottie.asset('assets/lotti/one.json', height: 130,repeat: true),
                     ],
                   ),
                   const SizedBox(
@@ -91,26 +93,26 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     child: const Text('Dial a plumber is an '
                         'initiative by SELD NETWORK KENYA that gives preference to promoting female artisans in the field of plumbing.',
                     style: TextStyle(
-                      fontSize: 15
+                      fontSize: 20
                     ),
                     ),
                   ),
                   const SizedBox(
                       height: 20
                   ),
-                  Row(
-                    children: const[
-                      Text(
-                          'Read More',
-                      style: TextStyle(
-                          // fontSize: ,
-                        fontWeight: FontWeight.bold
-                      ),
-                    ),
-                      SizedBox(width: 10),
-                      Icon(Icons.arrow_forward, size: 20,)
-                  ],
-                  ),
+                  // Row(
+                  //   children: const[
+                  //   //   Text(
+                  //   //       'Read More',
+                  //   //   style: TextStyle(
+                  //   //       // fontSize: ,
+                  //   //     fontWeight: FontWeight.bold
+                  //   //   ),
+                  //   // ),
+                  //     SizedBox(width: 10),
+                  //     Icon(Icons.arrow_forward, size: 20,)
+                  // ],
+                  // ),
 
                   const SizedBox(
                     height: 40,
@@ -128,7 +130,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           ),
                         ),
                       ),
-                      const Padding(
+
+                     const Padding(
                         padding: EdgeInsets.only(bottom:20.0),
                         child: Center(
                           child: Text(
@@ -159,10 +162,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         )
                       ],
                     ),
-                  )
+                  ),
                 ],
 
               ),
+
             ),
           )
         ],

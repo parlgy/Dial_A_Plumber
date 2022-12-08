@@ -9,7 +9,7 @@ class UserModel {
 
   UserModel({this.uid, this.fullName,this.personType, this.phoneNumber, this.region});
 
-  // recieve Data from the server
+  // receive Data from the server
   factory UserModel.fromMap(map) {
     return UserModel(
       uid: map['uid'],
