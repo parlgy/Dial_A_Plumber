@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:lottie/lottie.dart';
 
-import '../pages.dart';
-
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
 
@@ -82,37 +80,23 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           ],
                         ),
                       ),
-                      Expanded(child: Container()),
-                      // Lottie.asset('assets/lotti/one.json', height: 130,repeat: true),
                     ],
                   ),
                   const SizedBox(
                       height: 10
                   ),
                   Container(
-                    child: const Text('Dial a plumber is an '
+                    child: Text('Dial a plumber is an '
                         'initiative by SELD NETWORK KENYA that gives preference to promoting female artisans in the field of plumbing.',
                     style: TextStyle(
-                      fontSize: 20
+                      fontSize: 20,
+                      color: Colors.grey.shade800
                     ),
                     ),
                   ),
                   const SizedBox(
                       height: 20
                   ),
-                  // Row(
-                  //   children: const[
-                  //   //   Text(
-                  //   //       'Read More',
-                  //   //   style: TextStyle(
-                  //   //       // fontSize: ,
-                  //   //     fontWeight: FontWeight.bold
-                  //   //   ),
-                  //   // ),
-                  //     SizedBox(width: 10),
-                  //     Icon(Icons.arrow_forward, size: 20,)
-                  // ],
-                  // ),
 
                   const SizedBox(
                     height: 40,

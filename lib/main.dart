@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       onGenerateRoute: AppRouter.onGenerateRoute,
-      initialRoute: DashboardScreen.routeName,
+      initialRoute: LandingScreen.routeName,
     );
   }
 }
